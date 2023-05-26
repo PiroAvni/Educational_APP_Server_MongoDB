@@ -1,8 +1,7 @@
 ## Installation
 
 - Clone the repository to your local machine
-- Install the required dependencies by running the following command: "npm install"
- This will download and install all the necessary packages and libraries specified in the package.json file.
+- Install the required dependencies by running the following command: "npm install". This will download and install all the necessary packages and libraries specified in the package.json file.
  
 
 ## How To run 
