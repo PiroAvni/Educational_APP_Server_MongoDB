@@ -18,6 +18,6 @@ To set up these variables, create a new file called `.env`.
 
 ## How To run 
 
-- Execute the following command in your terminal to start the server::"npm run dev"
+- Execute the following command in your terminal to start the server:"npm run dev"
 
 
