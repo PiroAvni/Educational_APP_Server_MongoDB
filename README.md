@@ -14,7 +14,7 @@ To set up these variables, create a new file called `.env`.
 
 ## Database Setup
 
-To set up the database, run the following command in your terminal: "npm run setup-db"
+- To set up the database, run the following command in your terminal: "npm run setup-db"
 
 ## How To run 
 
