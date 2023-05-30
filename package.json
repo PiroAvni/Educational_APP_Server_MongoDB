@@ -4,18 +4,12 @@
     "description": "Educational Revision tool for Flash Cards",
     "main": "index.js",
     "scripts": {
-        "test": "jest",
+        "test": "jest --watchAll --coverage",
         "dev": "nodemon index.js",
         "seed": "node database/seedUsers.js"
     },
-    "jest": {
-        "testEnvironment": "node",
-        "preset":"@shelf/jest-mongodb",
-        "setupFilesAfterEnv": [
-            "./__test__/setupTest.js"
-        ],
-        "verbose": true
-    },
+  
+    
     "keywords": [],
     "author": "George Hill",
     "license": "MIT",

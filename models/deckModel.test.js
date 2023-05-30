@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Deck = require('../models/decks');
+const Deck = require('../models/deckModel.js');
 
 describe('Deck Model', () => {
   beforeAll(async () => {
