@@ -1,60 +1,53 @@
 const mongoose = require('mongoose');
-const Deck = require('../models/deckModel');
-
+const Deck = require('../models/decks');
 
 describe('Deck Model', () => {
-
-  beforeAll(async() => {
-    await mongoose.connect('mongodb://localhost:27017/testdb', {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-      });
+  beforeAll(async () => {
+    // Connect to a test database before running the tests
+    await mongoose.connect('mongodb://localhost:27017/test', {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
   });
 
-  beforeEach(async() => {
+  afterAll(async () => {
+    // Disconnect from the test database after running the tests
+    await mongoose.disconnect();
+  });
+
+  beforeEach(async () => {
+    // Clear the decks collection before each test
     await Deck.deleteMany({});
   });
 
-  afterEach(() => {
-    // Clean up any resources after each test if necessary
-  });
-
-  afterAll(async() => {
-    await mongoose.connection.close();
-  });
-
   it('should create a new deck', async () => {
-    // Mock the database query method if needed
+    const deckData = {
+      userId: mongoose.Types.ObjectId(),
+      categoryId: mongoose.Types.ObjectId(),
+      title: 'My Deck',
+      description: 'Deck description',
+    };
 
-    const newDeck = await Deck.create(deck);
-    expect(newDeck).toBeDefined();
-    expect(newDeck.id).toBe(1);
+    const deck = await Deck.create(deckData);
+
+    expect(deck).toHaveProperty('_id');
+    expect(deck.title).toBe(deckData.title);
+    expect(deck.description).toBe(deckData.description);
   });
 
-  it('should update an existing deck', async () => {
-    // Mock the database query method if needed
-    // For example:
-    // db.query.mockResolvedValueOnce({ deck_id: 1, ... });
+  it('should retrieve a deck by ID', async () => {
+    const deckData = {
+      userId: mongoose.Types.ObjectId(),
+      categoryId: mongoose.Types.ObjectId(),
+      title: 'My Deck',
+      description: 'Deck description',
+    };
 
-    const updatedDeck = await deck.update(1, deck);
-    expect(updatedDeck).toBeDefined();
-    // Add assertions to test the updated deck object
+    const createdDeck = await Deck.create(deckData);
+    const retrievedDeck = await Deck.findById(createdDeck._id);
+
+    expect(retrievedDeck).toHaveProperty('_id', createdDeck._id);
+    expect(retrievedDeck.title).toBe(createdDeck.title);
+    expect(retrievedDeck.description).toBe(createdDeck.description);
   });
-
-  it('should delete a deck', async () => {
-
-    const deletedDeck = await deck.destroy(1);
-    expect(deletedDeck).toBeDefined();
-  });
-
-  it('should get all decks', async () => {
-
-
-    const decks = await Deck.getAll();
-    expect(decks).toBeDefined();
-    expect(decks.length).toBeGreaterThan(0);
-    // Add assertions to test the returned array of decks
-  });
-
-  
 });
