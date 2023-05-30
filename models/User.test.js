@@ -1,10 +1,12 @@
 const mongoose = require('mongoose');
+require('dotenv').config()
 const bcrypt = require('bcryptjs');
-const User = require('../models/userModels');
+const User = require('./Users');
+
 
 describe('User Model', () => {
   beforeAll(async () => {
-    await mongoose.connect('mongodb://localhost:27017/testdb', {
+    await mongoose.connect('mongodb://localhost:27017/Project_3', {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });

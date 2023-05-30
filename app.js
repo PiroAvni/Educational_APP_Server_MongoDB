@@ -6,8 +6,8 @@ const connectDB = require ( './config/db-setup.js');
 const cookieParser = require('cookie-parser')
 const { notFound, errorHandler } =require( './middleware/errorMiddleware.js');
 const logger = require('./middleware/logger')
-const userRoutes = require ('./routes/userRoutes.js')
-const categoryRoutes = require ('./routes/categoryRoutes.js')
+const userRoutes = require ('./routes/Users.js')
+const categoryRoutes = require ('./routes/Categories.js')
 
 connectDB();
 

@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 const { MongoMemoryServer } = require('mongodb-memory-server');
 const mongoose = require('mongoose');
 const app = require('../app'); // Your Express app
-const User = require('../models/userModels');
+const User = require('../models/Users');
 const { generateToken } = require('../utils/generateToken');
 
 let mongoServer;
