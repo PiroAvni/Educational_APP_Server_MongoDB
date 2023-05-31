@@ -9,6 +9,7 @@ const logger = require('./middleware/logger')
 
 const userRoutes = require('./routes/userRoutes.js')
 const categoryRoutes = require('./routes/categoryRoutes.js')
+const deckRoutes = require('./routes/deckRoutes.js')
 
 connectDB()
 
@@ -21,6 +22,7 @@ app.use(logger)
 
 app.use('/api/users', userRoutes)
 app.use('/api/category', categoryRoutes)
+app.use('/api/decks', deckRoutes)
 
 app.get('/', (req, res) => {
   res.json({ App: 'Welcome to the Server!!' })
