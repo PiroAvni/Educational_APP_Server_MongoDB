@@ -5,7 +5,7 @@ const {
     createProgress,
     updateProgress,
     deleteProgress
-} = require('../controllers/progressController');
+} = require('../controllers/progressControllers');
 
 const router = express.Router();
 
