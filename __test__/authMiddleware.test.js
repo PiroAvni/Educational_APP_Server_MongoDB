@@ -2,17 +2,17 @@ const request = require('supertest');
 const jwt = require('jsonwebtoken');
 const { MongoMemoryServer } = require('mongodb-memory-server');
 const mongoose = require('mongoose');
-const app = require('../app'); // Your Express app
-const User = require('../models/userModels');
-const { protect } = require('../middlewares/authMiddleware');
+const app = require('../app'); 
+const User = require('../models/Users');
+const { protect } = require('../middleware/authMiddleware');
 
 let mongoServer;
 
 // Set up a mock MongoDB server
 beforeAll(async () => {
-  mongoServer = new MongoMemoryServer();
-  const mongoUri = await mongoServer.getUri();
-  await mongoose.connect(mongoUri, {
+  // mongoServer = new MongoMemoryServer();
+  // const mongoUri = await mongoServer.create(process.env.DB_CONNECTION);
+  await mongoose.connect(process.env.DB_CONNECTION, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   });
@@ -21,7 +21,7 @@ beforeAll(async () => {
 // Clean up after all tests
 afterAll(async () => {
   await mongoose.disconnect();
-  await mongoServer.stop();
+  // await mongoServer.stop();
 });
 
 describe('User API', () => {
@@ -30,7 +30,8 @@ describe('User API', () => {
   beforeEach(async () => {
     // Create a user in the test database
     const user = await User.create({
-      username: 'testuser',
+      name: 'TestUser',
+      email:'test@example.com',
       password: 'password',
     });
 

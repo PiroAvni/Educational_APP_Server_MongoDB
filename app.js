@@ -22,7 +22,7 @@ app.use(logger)
 
 app.use('/api/users', userRoutes)
 app.use('/api/category', categoryRoutes)
-app.use('/api/decks', deckRoutes)
+app.use('/api/deck', deckRoutes)
 
 app.get('/', (req, res) => {
   res.json({ App: 'Welcome to the Server!!' })
