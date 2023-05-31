@@ -97,7 +97,7 @@ The Flashcard App API provides the following endpoints:
 | `PATCH /api/bookmarks/{id}`. | Updates the bookmark entry with the specified `id`.           |
 | `DELETE /api/bookmarks/{id}` | Deletes the bookmark entry with the specified  `id`.          |
 
-d
+
 # Technologies
   
 ## Dependencies
