@@ -33,17 +33,17 @@ const progressSchema = mongoose.Schema({
   lastReviewedAt: {
     type: Date,
     default: Date.now,
-    // default: Timestamp.now,
   },
 
   progressPercentage: {
-    type: Date,
-    default: Date.now,
+    type: Number,
+    default: 0,
   },
 
   completionStatus: {
-    type: Date,
-    default: Date.now,
+    type: String,
+    default: 'Not Started',
+    enum: ['Not Started', 'In Progress', 'Completed']
   },
 })
 
