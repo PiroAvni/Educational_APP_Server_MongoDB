@@ -21,8 +21,12 @@ app.use(cors())
 app.use(logger)
 
 app.use('/api/users', userRoutes)
+<<<<<<< Updated upstream
 app.use('/api/category', categoryRoutes)
 app.use('/api/deck', deckRoutes)
+=======
+app.use('/api/categories', categoryRoutes)
+>>>>>>> Stashed changes
 
 app.get('/', (req, res) => {
   res.json({ App: 'Welcome to the Server!!' })
