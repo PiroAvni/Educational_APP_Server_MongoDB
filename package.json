@@ -4,7 +4,7 @@
     "description": "Educational Revision tool for Flash Cards",
     "main": "index.js",
     "scripts": {
-        "test": "jest --watchAll --coverage",
+        "test": "jest --coverage",
         "dev": "nodemon index.js",
         "seed": "node database/seedUsers.js"
     },

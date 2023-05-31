@@ -1,4 +1,4 @@
-const Deck = require('../models/deckModel')
+const Deck = require('../models/')
 const controller = require('../controllers/deckController')
 
 // Mocking the response object
