@@ -4,13 +4,11 @@ const progressSchema = mongoose.Schema({
   userID: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
-    required: true,
   },
 
   deckID: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Deck',
-    required: true,
   },
 
   cardsReviewed: {
