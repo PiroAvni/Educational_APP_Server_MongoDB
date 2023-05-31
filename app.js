@@ -11,7 +11,7 @@ const userRoutes = require('./routes/Users.js')
 const categoryRoutes = require('./routes/Categories.js')
 const deckRoutes = require('./routes/deckRoutes.js')
 const cardRoutes = require('./routes/cardsRoutes.js')
-
+const progressRoutes = require('./routes/progressRoutes.js')
 connectDB()
 
 const app = express()
@@ -25,6 +25,7 @@ app.use('/api/users', userRoutes)
 app.use('/api/deck', deckRoutes)
 app.use('/api/categories', categoryRoutes)
 app.use('/api/cards', cardRoutes)
+app.use('/api/progress', progressRoutes)
 
 app.get('/', (req, res) => {
   res.json({ App: 'Welcome to the Server!!' })

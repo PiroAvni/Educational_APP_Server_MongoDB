@@ -10,10 +10,12 @@ const bookmarksSchema = mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Cards',
   },
+},
+
   {
     timestamps: true,
   }
-})
+  )
 
 const Bookmarks = mongoose.model('Bookmarks', bookmarksSchema)
 
