@@ -7,7 +7,7 @@ const cookieParser = require('cookie-parser')
 const { notFound, errorHandler } = require('./middleware/errorMiddleware.js')
 const logger = require('./middleware/logger')
 
-const userRoutes = require('./routes/userRoutes.js')
+const userRoutes = require('./routes/Routes.js')
 const categoryRoutes = require('./routes/categoryRoutes.js')
 const deckRoutes = require('./routes/deckRoutes.js')
 
