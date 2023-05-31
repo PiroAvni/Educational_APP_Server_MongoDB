@@ -1,18 +1,20 @@
+require('dotenv').config()
 const request = require('supertest');
 const jwt = require('jsonwebtoken');
 const { MongoMemoryServer } = require('mongodb-memory-server');
 const mongoose = require('mongoose');
 const app = require('../app'); // Your Express app
-const User = require('../models/userModels');
+const User = require('../models/Users');
+
 const { generateToken } = require('../utils/generateToken');
 
 let mongoServer;
 
 // Set up a mock MongoDB server
 beforeAll(async () => {
-  mongoServer = new MongoMemoryServer();
-  const mongoUri = await mongoServer.getUri();
-  await mongoose.connect(mongoUri, {
+  // mongoServer = new MongoMemoryServer();
+  // const mongoUri = await mongoServer.create(process.env.DB_CONNECTION);
+  await mongoose.connect(process.env.DB_CONNECTION, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   });
@@ -21,7 +23,7 @@ beforeAll(async () => {
 // Clean up after all tests
 afterAll(async () => {
   await mongoose.disconnect();
-  await mongoServer.stop();
+  // await mongoServer.stop();
 });
 
 describe('User API', () => {
@@ -30,8 +32,8 @@ describe('User API', () => {
   beforeEach(async () => {
     // Create a user in the test database
     const user = await User.create({
-      name: 'Test User',
-      email: 'test@example.com',
+      name: 'TestUser',
+      email:'test@example.com',
       password: 'password',
     });
 
@@ -48,13 +50,14 @@ describe('User API', () => {
     it('should authenticate user and return token', async () => {
       const response = await request(app)
         .post('/api/users/auth')
-        .send({ email: 'test@example.com', password: 'password' })
+        .send({ name: 'TestUser', email: 'test@test.com', password: 'password' })
         .expect(200);
 
       expect(response.body).toHaveProperty('_id');
-      expect(response.body).toHaveProperty('name', 'Test User');
+      expect(response.body).toHaveProperty('name', 'TestUser');
       expect(response.body).toHaveProperty('email', 'test@example.com');
       expect(response.header).toHaveProperty('set-cookie');
+      expect(response.header).toHaveProperty('token');
     });
 
     it('should return 401 if invalid credentials are provided', async () => {
@@ -83,7 +86,7 @@ describe('User API', () => {
     it('should return 400 if user already exists', async () => {
       const response = await request(app)
         .post('/api/users')
-        .send({ name: 'Test User', email: 'test@example.com', password: 'password' })
+        .send({ name: 'New User', email: 'newuser@example.com', password: 'password' })
         .expect(400);
 
       expect(response.body.error).toEqual('User already exists');
@@ -110,7 +113,7 @@ describe('User API', () => {
         .expect(200);
 
       expect(response.body).toHaveProperty('_id');
-      expect(response.body).toHaveProperty('name', 'Test User');
+      expect(response.body).toHaveProperty('name', 'TestUser');
       expect(response.body).toHaveProperty('email', 'test@example.com');
     });
 
@@ -132,11 +135,11 @@ describe('User API', () => {
       const response = await request(app)
         .put('/api/users/profile')
         .set('Cookie', `jwt=${token}`)
-        .send({ name: 'Updated User', email: 'updateduser@example.com' })
+        .send({ name: 'UpdatedUser', email: 'updateduser@example.com' })
         .expect(200);
 
       expect(response.body).toHaveProperty('_id');
-      expect(response.body).toHaveProperty('name', 'Updated User');
+      expect(response.body).toHaveProperty('name', 'UpdatedUser');
       expect(response.body).toHaveProperty('email', 'updateduser@example.com');
     });
 
@@ -148,7 +151,7 @@ describe('User API', () => {
         .expect(200);
 
       expect(response.body).toHaveProperty('_id');
-      expect(response.body).toHaveProperty('name', 'Test User');
+      expect(response.body).toHaveProperty('name', 'TestUser');
       expect(response.body).toHaveProperty('email', 'test@example.com');
     });
 
@@ -159,11 +162,12 @@ describe('User API', () => {
       const response = await request(app)
         .put('/api/users/profile')
         .set('Cookie', `jwt=${token}`)
-        .send({ name: 'Updated User', email: 'updateduser@example.com' })
+        .send({ name: 'UpdatedUser', email: 'updateduser@example.com' })
         .expect(404);
 
       expect(response.body.error).toEqual('User not found');
     });
+    
   });
 });
 

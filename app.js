@@ -7,8 +7,8 @@ const cookieParser = require('cookie-parser')
 const { notFound, errorHandler } = require('./middleware/errorMiddleware.js')
 const logger = require('./middleware/logger')
 
-const userRoutes = require('./routes/userRoutes.js')
-const categoryRoutes = require('./routes/categoryRoutes.js')
+const userRoutes = require('./routes/Users.js')
+const categoryRoutes = require('./routes/Categories.js')
 
 connectDB()
 
@@ -19,8 +19,11 @@ app.use(cookieParser())
 app.use(cors())
 app.use(logger)
 
-app.use('/api/users', userRoutes)
-app.use('/api/category', categoryRoutes)
+app.use('/api/users', userRoutes);
+app.use('/api/categories', categoryRoutes);
+
+
+
 
 app.get('/', (req, res) => {
   res.json({ App: 'Welcome to the Server!!' })

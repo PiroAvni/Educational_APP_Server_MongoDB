@@ -1,10 +1,14 @@
 const mongoose = require('mongoose');
+const request = require('supertest');
+const app = require('../app'); // Your Express app
+require('dotenv').config()
 const bcrypt = require('bcryptjs');
-const User = require('../models/userModels');
+const User = require('../models/Users');
+
 
 describe('User Model', () => {
   beforeAll(async () => {
-    await mongoose.connect('mongodb://localhost:27017/testdb', {
+    await mongoose.connect(process.env.DB_CONNECTION, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
@@ -38,8 +42,8 @@ describe('User Model', () => {
 
     it('should require email field to be unique', async () => {
       const existingUser = new User({
-        name: 'Existing User',
-        email: 'existing@example.com',
+        name: 'Test User',
+        email: 'test@example.com',
         password: 'password',
       });
 
@@ -47,7 +51,7 @@ describe('User Model', () => {
 
       const user = new User({
         name: 'New User',
-        email: 'existing@example.com', // Same email as existingUser
+        email: 'test@example.com', // Same email as existingUser
         password: 'password',
       });
 
@@ -59,7 +63,7 @@ describe('User Model', () => {
         validationError = error;
       }
 
-      expect(validationError.errors.email).toBeDefined();
+      expect(validationError.error.email).toBeDefined();
     });
   });
 
@@ -82,14 +86,14 @@ describe('User Model', () => {
       const password = 'password';
 
       const user = new User({
-        name: 'Test User',
-        email: 'test@example.com',
+        name: 'Test User1',
+        email: 'test1@example.com',
         password: password,
       });
 
       await user.save();
 
-      const savedUser = await User.findOne({ email: 'test@example.com' });
+      const savedUser = await User.findOne({ email: 'test1@example.com' });
 
       expect(savedUser.password).not.toBe(password);
       expect(await bcrypt.compare(password, savedUser.password)).toBe(true);
