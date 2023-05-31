@@ -4,7 +4,7 @@ const { getBookmarks,
     getBookmarksById,
     createBookmarks,
     updateBookmarks,
-    deleteBookmarks } = require('../controllers/bookmarksControllers.js')
+    deleteBookmarks } = require('../controllers/bookmarks')
 
 const router = express.Router()
 

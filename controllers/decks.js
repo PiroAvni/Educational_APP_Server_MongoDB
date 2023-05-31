@@ -1,4 +1,4 @@
-const Deck = require('../models/deckModel')
+const Deck = require('../models/Decks')
 
 const index = async (req, res) => {
   try {
