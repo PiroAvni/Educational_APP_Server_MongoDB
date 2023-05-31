@@ -1,6 +1,10 @@
 .env 
 node_modules
+<<<<<<< HEAD
 .DS_Store
 vscode/*
 coverages/*
 globalConfig.json
+=======
+ 
+>>>>>>> staging
