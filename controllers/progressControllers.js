@@ -24,32 +24,55 @@ const getProgressById = async (req, res) => {
   }
 }
 const createProgress = async (req, res) => {
-  try {
-    const { name } = req.body
-
-    let progress = await Progress.create({ name })
-    res.status(201).json(progress)
+    const { userID, deckID, cardsReviewed, correctResponses, incorrectResponses, lastReviewed, progressPercentage, completionStatus } = req.body
+    try {
+        const newProgress = await Progress.create ({userID, deckID, cardsReviewed, correctResponses, incorrectResponses, lastReviewed, progressPercentage, completionStatus
+    })
+    res.status(201).json(newProgress)
   } catch (error) {
     res.status(500).json({ error: error.message })
   }
 }
 const updateProgress = async (req, res) => {
   try {
-    const { name } = req.body
-    let progress = await Progress.findById(req.params.id)
+    const {
+      userID,
+      deckID,
+      cardsReviewed,
+      correctResponses,
+      incorrectResponses,
+      lastReviewedAt,
+      progressPercentage,
+      completionStatus,
+    } = req.body
+    let progress = await Progress.findByIdAndUpdate(
+      req.params.id,
+      {
+        userID,
+        deckID,
+        cardsReviewed,
+        correctResponses,
+        incorrectResponses,
+        lastReviewedAt,
+        progressPercentage,
+        completionStatus,
+      },
+      {
+        new: true,
+      }
+    )
     if (!progress) {
       throw new Error('Progress not found')
     }
-    progress.name = name
-    progress = await progress.save()
-    res.json(progress)
+    res.status(200).json(progress)
   } catch (error) {
-    res.status(500).json({ error: error.message })
+    res.status(400).json({ error: error.message })
   }
 }
+
 const deleteProgress = async (req, res) => {
   try {
-    const progress = await Progress.findById(req.params.id)
+    const progress = await Progress.findByIdAndDelete(req.params.id)
     if (!progress) {
       throw new Error('Progress not found')
     }
