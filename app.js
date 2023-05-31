@@ -7,8 +7,8 @@ const cookieParser = require('cookie-parser')
 const { notFound, errorHandler } = require('./middleware/errorMiddleware.js')
 const logger = require('./middleware/logger')
 
-const userRoutes = require('./routes/userRoutes.js')
-const categoryRoutes = require('./routes/categoryRoutes.js')
+const userRoutes = require('./routes/Users.js')
+const categoryRoutes = require('./routes/Categories.js')
 const deckRoutes = require('./routes/deckRoutes.js')
 
 connectDB()
@@ -21,12 +21,8 @@ app.use(cors())
 app.use(logger)
 
 app.use('/api/users', userRoutes)
-<<<<<<< Updated upstream
-app.use('/api/category', categoryRoutes)
 app.use('/api/deck', deckRoutes)
-=======
 app.use('/api/categories', categoryRoutes)
->>>>>>> Stashed changes
 
 app.get('/', (req, res) => {
   res.json({ App: 'Welcome to the Server!!' })
