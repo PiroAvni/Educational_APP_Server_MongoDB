@@ -1,10 +1,8 @@
 const request = require('supertest')
 const app = require('../app')
-const Category = require('../models/categoryModel')
+const Category = require('../models/categoriesModel')
 
-describe('api for categories', () => {
-  // success
-
+describe('api for category', () => {
   it('should respond with 200 ', async () => {
     const response = await request(app)
       .get('/api/categories')
