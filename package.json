@@ -7,11 +7,6 @@
         "test": "jest --watchAll --coverage",
         "dev": "nodemon index.js",
         "seed": "node database/seedUsers.js"
-<<<<<<< HEAD
-    },
-  
-    
-=======
     },
     "jest": {
         "testEnvironment": "node",
@@ -21,7 +16,6 @@
         ],
         "verbose": true
     },
->>>>>>> staging
     "keywords": [],
     "author": "George Hill",
     "license": "MIT",

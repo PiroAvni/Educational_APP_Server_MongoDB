@@ -5,13 +5,8 @@ const {
   logoutUser,
   getUserProfile,
   updateUserProfile,
-<<<<<<< HEAD:routes/Users.js
 } = require ('../controllers/Users.js') ;
 const { protect } = require ('../middleware/authMiddleware.js') ;
-=======
-} = require('../controllers/userControllers.js')
-const { protect } = require('../middleware/authMiddleware.js')
->>>>>>> staging:routes/userRoutes.js
 
 const router = express.Router()
 

@@ -5,7 +5,6 @@ const connectionUrl = process.env.DB_CONNECTION
 const dbName = process.env.DB_NAME
 
 const connectDB = async () => {
-<<<<<<< HEAD
     try {
        const conn = await mongoose.connect(connectionUrl,{
         dbName,
@@ -20,15 +19,3 @@ const connectDB = async () => {
 }
 
 module.exports = connectDB;
-=======
-  try {
-    const conn = await mongoose.connect(connectionUrl)
-    console.log(` MongoDB Connected:${conn.connection.host} 🚀`)
-  } catch (error) {
-    console.error(`Error:${error.message}`)
-    process.exit(1)
-  }
-}
-
-module.exports = connectDB
->>>>>>> staging
