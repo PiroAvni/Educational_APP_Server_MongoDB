@@ -5,7 +5,7 @@ const {
   create,
   update,
   destroy
-} = require('../controllers/deckController');
+} = require('../controllers/decks');
 
 const router = express.Router();
 
