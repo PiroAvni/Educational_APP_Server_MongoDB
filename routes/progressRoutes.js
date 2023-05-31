@@ -12,7 +12,7 @@ const router = express.Router();
 router.get('/', getProgress);
 router.get('/:id', getProgressById);
 router.post('/', createProgress);
-router.put('/:id', updateProgress);
+router.patch('/:id', updateProgress);
 router.delete('/:id', deleteProgress);
 
 module.exports = router;
