@@ -1,8 +1,4 @@
-# Flashcard App 
-
-This repository contains the source code for a Flashcard App, a web application that allows users to create, update and delete, and review flashcards. 
-
-## Installation
+ ## Installation
 
 - Clone the repository to your local machine
 - Install the required dependencies by running the following command: ```"npm install"```. This will download and install all the necessary packages and libraries specified in the package.json file.
@@ -20,10 +16,17 @@ To set up these variables, create a new file called `.env`.
 
 - To set up the database, run the following command in your terminal: ```"npm run setup-db"```
 
-## How To run 
+## How To run the server
 
 - Execute the following command in your terminal to start the server: ```"npm run dev"```
 
+## How To run the test
+
+To run the tests, follow these steps:
+
+- Ensure that all project dependencies are installed by running ```"npm install"```.
+- Run the command ```"npm run test"``` in the terminal.
+- The tests will be executed, and the results will be displayed in the terminal.
 
 ## API Endpoints
 
@@ -117,6 +120,6 @@ The Flashcard App API provides the following endpoints:
 
 
 ## Dev Dependencies
-jest
-nodemon
-supertest
+- jest
+- nodemon
+- supertest
