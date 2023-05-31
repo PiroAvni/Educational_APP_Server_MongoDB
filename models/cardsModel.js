@@ -22,6 +22,7 @@ const cardsSchema = mongoose.Schema({
   viewCount: {
     type: Number,
     required: true,
+    default: 0,
   },
 })
 
