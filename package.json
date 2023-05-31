@@ -4,7 +4,7 @@
     "description": "Educational Revision tool for Flash Cards",
     "main": "index.js",
     "scripts": {
-        "test": "jest",
+        "test": "jest --watchAll --coverage",
         "dev": "nodemon index.js",
         "seed": "node database/seedUsers.js"
     },
@@ -17,7 +17,7 @@
         "verbose": true
     },
     "keywords": [],
-    "author": "Avni piro",
+    "author": "George Hill",
     "license": "MIT",
     "dependencies": {
         "bcrypt": "^5.1.0",
