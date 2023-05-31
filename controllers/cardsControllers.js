@@ -1,65 +1,75 @@
-const Card = require('../models/cardsModel');
+const Card = require('../models/cardsModel')
 
 const getCard = async (req, res) => {
   try {
-    const cards = await Card.find();
+    const cards = await Card.find()
     if (cards.length === 0) {
-      throw new Error('No cards found');
+      throw new Error('No cards found')
     }
-    res.status(200).json(cards);
+    res.status(200).json(cards)
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    res.status(500).json({ error: error.message })
   }
-};
+}
 
 const getCardByID = async (req, res) => {
-  const id = req.params.id;
+  const id = req.params.id
   try {
-    const card = await Card.findById(id);
+    const card = await Card.findById(id)
     if (!card) {
-      throw new Error('Cannot locate the card');
+      throw new Error('Cannot locate the card')
     }
-    res.status(200).send(card);
+    res.status(200).send(card)
   } catch (error) {
-    res.status(400).json({ error: error.message });
+    res.status(400).json({ error: error.message })
   }
-};
+}
 
 const createCard = async (req, res) => {
-  const { name } = req.body;
+  const { categoryID, deckID, frontContent, backContent, viewCount } = req.body
   try {
-    const newCard = await Card.create({ name });
-    res.status(201).send(newCard);
+    const newCard = await Card.create({
+      categoryID,
+      deckID,
+      frontContent,
+      backContent,
+      viewCount,
+    })
+    res.status(201).send(newCard)
   } catch (error) {
-    res.status(400).send(error);
+    res.status(400).send(error)
   }
-};
+}
 
 const updateCard = async (req, res) => {
-  const id = req.params.id;
-  const { name } = req.body;
+  const id = req.params.id
+  const { categoryID, deckID, frontContent, backContent, viewCount } = req.body
   try {
-    const updatedCard = await Card.findByIdAndUpdate(id, { name }, { new: true });
+    const updatedCard = await Card.findByIdAndUpdate(
+      id,
+      { categoryID, deckID, frontContent, backContent, viewCount },
+      { new: true }
+    )
     if (!updatedCard) {
-      throw new Error('Cannot locate the card');
+      throw new Error('Cannot locate the card')
     }
-    res.status(200).send(updatedCard);
+    res.status(200).send(updatedCard)
   } catch (error) {
-    res.status(400).send(error.message);
+    res.status(400).send(error.message)
   }
-};
+}
 
 const deleteCard = async (req, res) => {
-  const id = req.params.id;
+  const id = req.params.id
   try {
-    const deletedCard = await Card.findByIdAndDelete(id);
+    const deletedCard = await Card.findByIdAndDelete(id)
     if (!deletedCard) {
-      throw new Error('Cannot locate the card');
+      throw new Error('Cannot locate the card')
     }
-    res.status(204).send();
+    res.status(204).send()
   } catch (error) {
-    res.status(400).send(error.message);
+    res.status(400).send(error.message)
   }
-};
+}
 
-module.exports = { getCard, getCardByID, createCard, updateCard, deleteCard };
+module.exports = { getCard, getCardByID, createCard, updateCard, deleteCard }
