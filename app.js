@@ -25,7 +25,7 @@ app.use(logger)
 app.use('/api/users', userRoutes)
 app.use('/api/deck', deckRoutes)
 app.use('/api/categories', categoryRoutes)
-app.use('/api/cards', cardRoutes)
+app.use('/api/cards', cardRoutes )
 app.use('/api/progress', progressRoutes)
 app.use('/api/bookmarks', bookmarksRoutes)
 
