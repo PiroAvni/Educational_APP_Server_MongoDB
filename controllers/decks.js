@@ -2,7 +2,7 @@ const Deck = require('../models/Decks')
 
 const index = async (req, res) => {
   try {
-    const decks = await Deck.find()
+    const decks = await Deck.find().populate("userId").populate("categoryId")
     res.status(200).json(decks)
   } catch (err) {
     res.status(500).json({ error: err.message })
@@ -11,7 +11,7 @@ const index = async (req, res) => {
 
 const show = async (req, res) => {
   try {
-    const deck = await Deck.findById(req.params.id)
+    const deck = await Deck.findById(req.params.id).populate('userId').populate('categoryId')
     res.status(200).json(deck)
   } catch (err) {
     res.status(400).json({ error: err.message })

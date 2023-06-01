@@ -1,8 +1,9 @@
 const Card = require('../models/Cards')
 
+
 const getCard = async (req, res) => {
   try {
-    const cards = await Card.find()
+    const cards = await Card.find().populate("categoryID").populate("deckID")
     if (cards.length === 0) {
       throw new Error('No cards found')
     }
@@ -15,7 +16,7 @@ const getCard = async (req, res) => {
 const getCardByID = async (req, res) => {
   const id = req.params.id
   try {
-    const card = await Card.findById(id)
+    const card = await Card.findById(id).populate("categoryID").populate("deckID")
     if (!card) {
       throw new Error('Cannot locate the card')
     }
