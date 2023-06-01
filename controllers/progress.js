@@ -2,7 +2,14 @@ const Progress = require('../models/Progress')
 
 const getProgress = async (req, res) => {
   try {
+<<<<<<< HEAD
     const progress = await Progress.find().populate("userID").populate("deckID").populate("deckID")
+=======
+    const progress = await Progress.find()
+      .populate('userID')
+      .populate('deckID')
+      .populate('deckID')
+>>>>>>> 708f1f1f913f45858510a6460f8ba01811c930ae
     if (progress.length === 0) {
       throw new Error('No progress found')
     }
@@ -14,7 +21,14 @@ const getProgress = async (req, res) => {
 
 const getProgressById = async (req, res) => {
   try {
+<<<<<<< HEAD
     const progress = await Progress.findById(req.params.id).populate("userID").populate("deckID").populate("deckID")
+=======
+    const progress = await Progress.findById(req.params.id)
+      .populate('userID')
+      .populate('deckID')
+      .populate('deckID')
+>>>>>>> 708f1f1f913f45858510a6460f8ba01811c930ae
     if (!progress) {
       throw new Error('Progress ID not found')
     }
