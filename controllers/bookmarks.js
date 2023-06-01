@@ -2,7 +2,7 @@ const Bookmarks = require('../models/Bookmarks');
 
 const getBookmarks = async (req, res) => {
   try {
-    const bookmarks = await Bookmarks.find()
+    const bookmarks = await Bookmarks.find().populate("userId").populate("cardID")
     if (bookmarks.length === 0) {
         throw new Error('No bookmarks found')
     }
@@ -14,7 +14,7 @@ const getBookmarks = async (req, res) => {
 
 const getBookmarksById = async (req, res) => {
   try {
-    const bookmarks = await Bookmarks.findById(req.params.id)
+    const bookmarks = await Bookmarks.findById(req.params.id).populate("userId").populate("cardID")
     if (!bookmarks) {
       throw new Error('Bookmarks ID not found')
     }
