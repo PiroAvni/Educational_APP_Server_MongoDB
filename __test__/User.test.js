@@ -1,102 +1,101 @@
-const mongoose = require('mongoose');
-const request = require('supertest');
-const app = require('../app'); // Your Express app
+const mongoose = require('mongoose')
+const request = require('supertest')
+const app = require('../app') // Your Express app
 require('dotenv').config()
-const bcrypt = require('bcryptjs');
-const User = require('../models/Users');
-
+const bcrypt = require('bcryptjs')
+const User = require('../models/Users')
 
 describe('User Model', () => {
   beforeAll(async () => {
     await mongoose.connect(process.env.DB_CONNECTION, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
-    });
-  });
+    })
+  })
 
   afterAll(async () => {
-    await mongoose.connection.close();
-  });
+    await mongoose.connection.close()
+  })
 
   beforeEach(async () => {
     // Remove all users from the test database
-    await User.deleteMany({});
-  });
+    await User.deleteMany({})
+  })
 
   describe('userSchema', () => {
     it('should require name, email, and password fields', async () => {
-      const user = new User();
+      const user = new User()
 
-      let validationError;
+      let validationError
 
       try {
-        await user.validate();
+        await user.validate()
       } catch (error) {
-        validationError = error;
+        validationError = error
       }
 
-      expect(validationError.errors.name).toBeDefined();
-      expect(validationError.errors.email).toBeDefined();
-      expect(validationError.errors.password).toBeDefined();
-    });
+      expect(validationError.errors.name).toBeDefined()
+      expect(validationError.errors.email).toBeDefined()
+      expect(validationError.errors.password).toBeDefined()
+    })
 
     it('should require email field to be unique', async () => {
       const existingUser = new User({
         name: 'Test User',
         email: 'test@example.com',
         password: 'password',
-      });
+      })
 
-      await existingUser.save();
+      await existingUser.save()
 
       const user = new User({
         name: 'New User',
         email: 'test@example.com', // Same email as existingUser
         password: 'password',
-      });
+      })
 
-      let validationError;
+      let validationError
 
       try {
-        await user.validate();
+        await user.validate()
       } catch (error) {
-        validationError = error;
+        validationError = error
       }
 
-      expect(validationError.error.email).toBeDefined();
-    });
-  });
+      expect(validationError.error.email).toBeDefined()
+    })
+  })
 
   describe('User model methods', () => {
     it('should correctly compare passwords using matchPassword method', async () => {
-      const password = 'password';
-      const hashedPassword = await bcrypt.hash(password, 10);
+      const password = 'password'
+      const hashedPassword = await bcrypt.hash(password, 10)
 
       const user = new User({
         name: 'Test User',
         email: 'test@example.com',
         password: hashedPassword,
-      });
+      })
 
-      expect(await user.matchPassword('password')).toBe(true);
-      expect(await user.matchPassword('wrongpassword')).toBe(false);
-    });
+      expect(await user.matchPassword('password')).toBe(true)
+      expect(await user.matchPassword('wrongpassword')).toBe(false)
+    })
 
     it('should hash password before saving using pre-save hook', async () => {
-      const password = 'password';
+      const password = 'password'
 
       const user = new User({
         name: 'Test User1',
         email: 'test1@example.com',
         password: password,
-      });
+      })
 
-      await user.save();
+      await user.save()
 
-      const savedUser = await User.findOne({ email: 'test1@example.com' });
+      const savedUser = await User.findOne({ email: 'test1@example.com' })
 
-      expect(savedUser.password).not.toBe(password);
-      expect(await bcrypt.compare(password, savedUser.password)).toBe(true);
-    });
-  });
-});
+      expect(savedUser.password).not.toBe(password)
+      expect(await bcrypt.compare(password, savedUser.password)).toBe(true)
+    })
+  })
+})
