@@ -2,13 +2,9 @@ const Bookmarks = require('../models/Bookmarks')
 
 const getBookmarks = async (req, res) => {
   try {
-<<<<<<< HEAD
-    const bookmarks = await Bookmarks.find().populate("userID").populate("cardID")
-=======
     const bookmarks = await Bookmarks.find()
       .populate('userID')
       .populate('cardID')
->>>>>>> 708f1f1f913f45858510a6460f8ba01811c930ae
     if (bookmarks.length === 0) {
       throw new Error('No bookmarks found')
     }
@@ -20,13 +16,9 @@ const getBookmarks = async (req, res) => {
 
 const getBookmarksById = async (req, res) => {
   try {
-<<<<<<< HEAD
-    const bookmarks = await Bookmarks.findById(req.params.id).populate("userID").populate("cardID")
-=======
     const bookmarks = await Bookmarks.findById(req.params.id)
       .populate('userID')
       .populate('cardID')
->>>>>>> 708f1f1f913f45858510a6460f8ba01811c930ae
     if (!bookmarks) {
       throw new Error('Bookmarks ID not found')
     }
@@ -41,7 +33,7 @@ const createBookmarks = async (req, res) => {
     const newBookmarks = await Bookmarks.create({ userID, cardID })
     res.status(201).json(newBookmarks)
   } catch (error) {
-    res.status(400).json({ error: error.message })
+    res.status(400).json(error)
   }
 }
 const updateBookmarks = async (req, res) => {
