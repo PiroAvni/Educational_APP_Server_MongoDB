@@ -33,7 +33,7 @@ const createBookmarks = async (req, res) => {
     const newBookmarks = await Bookmarks.create({ userID, cardID })
     res.status(201).json(newBookmarks)
   } catch (error) {
-    res.status(400).json({ error: error.message })
+    res.status(400).json(error)
   }
 }
 const updateBookmarks = async (req, res) => {

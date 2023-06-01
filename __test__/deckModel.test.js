@@ -22,8 +22,8 @@ describe('Deck Model', () => {
 
   it('should create a new deck', async () => {
     const deckData = {
-      userId: mongoose.Types.ObjectId(),
-      categoryId: mongoose.Types.ObjectId(),
+      userID: mongoose.Types.ObjectId(),
+      categoryID: mongoose.Types.ObjectId(),
       title: 'My Deck',
       description: 'Deck description',
     }
@@ -37,8 +37,8 @@ describe('Deck Model', () => {
 
   it('should retrieve a deck by ID', async () => {
     const deckData = {
-      userId: mongoose.Types.ObjectId(),
-      categoryId: mongoose.Types.ObjectId(),
+      userID: mongoose.Types.ObjectId(),
+      categoryID: mongoose.Types.ObjectId(),
       title: 'My Deck',
       description: 'Deck description',
     }

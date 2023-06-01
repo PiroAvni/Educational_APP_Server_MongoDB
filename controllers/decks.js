@@ -21,12 +21,12 @@ const show = async (req, res) => {
 }
 
 const create = async (req, res) => {
-  const { userId, categoryId, title, description, visibility, create_date } =
+  const { userID, categoryID, title, description, visibility, create_date } =
     req.body
   try {
     const deck = await Deck.create({
-      userId,
-      categoryId,
+      userID,
+      categoryID,
       title,
       description,
       visibility,

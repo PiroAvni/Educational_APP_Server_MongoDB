@@ -5,7 +5,6 @@ const getProgress = async (req, res) => {
     const progress = await Progress.find()
       .populate('userID')
       .populate('deckID')
-      .populate('deckID')
     if (progress.length === 0) {
       throw new Error('No progress found')
     }
@@ -19,7 +18,6 @@ const getProgressById = async (req, res) => {
   try {
     const progress = await Progress.findById(req.params.id)
       .populate('userID')
-      .populate('deckID')
       .populate('deckID')
     if (!progress) {
       throw new Error('Progress ID not found')

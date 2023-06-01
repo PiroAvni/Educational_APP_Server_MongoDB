@@ -38,7 +38,7 @@ describe('User API', () => {
     })
 
     // Generate a JWT token for the user
-    token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET)
+    token = jwt.sign({ userID: user._id }, process.env.JWT_SECRET)
   })
 
   afterEach(async () => {
