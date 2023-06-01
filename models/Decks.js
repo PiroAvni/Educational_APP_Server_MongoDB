@@ -6,7 +6,7 @@ const deckSchema = mongoose.Schema({
     ref: 'User',
   },
   categoryId: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: mongoose.Schema.Types.String,
     ref: 'Category',
   },
   title: {
