@@ -4,11 +4,13 @@ const progressSchema = mongoose.Schema({
   userID: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
+    required: true,
   },
 
   deckID: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Deck',
+    required: true,
   },
 
   cardsReviewed: {
@@ -41,10 +43,9 @@ const progressSchema = mongoose.Schema({
   completionStatus: {
     type: String,
     default: 'Not Started',
-    enum: ['Not Started', 'In Progress', 'Completed']
+    enum: ['Not Started', 'In Progress', 'Completed'],
   },
 })
-
 const Progress = mongoose.model('Progress', progressSchema)
 
 module.exports = Progress

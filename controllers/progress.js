@@ -2,9 +2,7 @@ const Progress = require('../models/Progress')
 
 const getProgress = async (req, res) => {
   try {
-    const progress = await Progress.find()
-      .populate('userID')
-      .populate('deckID')
+    const progress = await Progress.find().populate('userID').populate('deckID')
     if (progress.length === 0) {
       throw new Error('No progress found')
     }
@@ -24,7 +22,7 @@ const getProgressById = async (req, res) => {
     }
     res.status(200).json(progress)
   } catch (error) {
-    res.status(500).json({ error: error.message })
+    res.status(400).json({ error: error.message })
   }
 }
 const createProgress = async (req, res) => {
@@ -51,7 +49,7 @@ const createProgress = async (req, res) => {
     })
     res.status(201).json(newProgress)
   } catch (error) {
-    res.status(500).json({ error: error.message })
+    res.status(400).json({ error: error.message })
   }
 }
 const updateProgress = async (req, res) => {
@@ -99,7 +97,7 @@ const deleteProgress = async (req, res) => {
     }
     res.status(204).json({ message: 'Progress deleted successfully' })
   } catch (error) {
-    res.status(500).json({ error: error.message })
+    res.status(400).json({ error: error.message })
   }
 }
 
