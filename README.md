@@ -45,7 +45,7 @@ The Flashcard App API provides the following endpoints:
 | Endpoint                 | Description                                                       |
 |--------------------------|-------------------------------------------------------------------|
 | `POST /api/users`        | Creates a new user.                                               |
-| `POST /api/users/logout` | Authenticates a user and generates an access token.               |
+| `POST /api/users/login.` | Authenticates a user and generates an access token.               |
 | `POST /api/users/logout` | Logs out the currently authenticated user.                        |
 | `GET /api/users/profile` | Retrieves the profile information of the authenticated user       |
 | `PUT /api/users/profile` | Updates the profile information of the authenticated user         |
