@@ -126,9 +126,9 @@
 <a name='L61'></a><a href='#L61'>61</a>
 <a name='L62'></a><a href='#L62'>62</a>
 <a name='L63'></a><a href='#L63'>63</a>
-<a name='L64'></a><a href='#L64'>64</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
+<a name='L64'></a><a href='#L64'>64</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -137,7 +137,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -146,7 +146,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -164,7 +164,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -173,7 +173,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -182,7 +182,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -193,7 +193,7 @@
 &nbsp;
 const index = <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
-    const decks = <span class="cstat-no" title="statement not covered" >await Deck.find()</span>
+    const decks = <span class="cstat-no" title="statement not covered" >await Deck.find().populate("userID").populate("categoryID")</span>
 <span class="cstat-no" title="statement not covered" >    res.status(200).json(decks)</span>
   } catch (err) {
 <span class="cstat-no" title="statement not covered" >    res.status(500).json({ error: err.message })</span>
@@ -202,28 +202,28 @@ const index = <span class="fstat-no" title="function not covered" >as</span>ync 
 &nbsp;
 const show = <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
-    const deck = <span class="cstat-no" title="statement not covered" >await Deck.findById(req.params.id)</span>
+    const deck = <span class="cstat-no" title="statement not covered" >await Deck.findById(req.params.id).populate('userID').populate('categoryID')</span>
 <span class="cstat-no" title="statement not covered" >    res.status(200).json(deck)</span>
   } catch (err) {
-<span class="cstat-no" title="statement not covered" >    res.status(500).json({ error: err.message })</span>
+<span class="cstat-no" title="statement not covered" >    res.status(400).json({ error: err.message })</span>
   }
 }
 &nbsp;
 const create = <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
-  const { userId, categoryId, title, description, visibility, create_date } =
+  const { userID, categoryID, title, description, visibility, create_date } =
 <span class="cstat-no" title="statement not covered" >    req.body</span>
 <span class="cstat-no" title="statement not covered" >  try {</span>
     const deck = <span class="cstat-no" title="statement not covered" >await Deck.create({</span>
-      userId,
-      categoryId,
+      userID,
+      categoryID,
       title,
       description,
       visibility,
       create_date,
     })
-<span class="cstat-no" title="statement not covered" >    res.status(200).json(deck)</span>
+<span class="cstat-no" title="statement not covered" >    res.status(201).json(deck)</span>
   } catch (err) {
-<span class="cstat-no" title="statement not covered" >    res.status(500).json({ error: err.message })</span>
+<span class="cstat-no" title="statement not covered" >    res.status(400).json({ error: err.message })</span>
   }
 }
 &nbsp;
@@ -232,16 +232,16 @@ const update = <span class="fstat-no" title="function not covered" >as</span>ync
     const deck = <span class="cstat-no" title="statement not covered" >await Deck.updateOne({ _id: req.params.id }, req.body)</span>
 <span class="cstat-no" title="statement not covered" >    res.status(200).json(deck)</span>
   } catch (err) {
-<span class="cstat-no" title="statement not covered" >    res.status(500).json({ error: err.message })</span>
+<span class="cstat-no" title="statement not covered" >    res.status(400).json({ error: err.message })</span>
   }
 }
 &nbsp;
 const destroy = <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
     const deck = <span class="cstat-no" title="statement not covered" >await Deck.deleteOne({ _id: req.params.id })</span>
-<span class="cstat-no" title="statement not covered" >    res.status(200).json(deck)</span>
+<span class="cstat-no" title="statement not covered" >    res.status(204).json(deck)</span>
   } catch (err) {
-<span class="cstat-no" title="statement not covered" >    res.status(500).json({ error: err.message })</span>
+<span class="cstat-no" title="statement not covered" >    res.status(400).json({ error: err.message })</span>
   }
 }
 &nbsp;
@@ -259,7 +259,7 @@ module.exports = {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-05-31T17:55:00.442Z
+                at 2023-06-01T10:11:27.351Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

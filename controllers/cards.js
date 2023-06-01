@@ -1,8 +1,9 @@
 const Card = require('../models/Cards')
 
+
 const getCard = async (req, res) => {
   try {
-    const cards = await Card.find()
+    const cards = await Card.find().populate("categoryID").populate("deckID")
     if (cards.length === 0) {
       throw new Error('No cards found')
     }
@@ -15,7 +16,7 @@ const getCard = async (req, res) => {
 const getCardByID = async (req, res) => {
   const id = req.params.id
   try {
-    const card = await Card.findById(id)
+    const card = await Card.findById(id).populate("categoryID").populate("deckID")
     if (!card) {
       throw new Error('Cannot locate the card')
     }
@@ -58,13 +59,11 @@ const updateCard = async (req, res) => {
     res.status(400).send(error.message)
   }
 }
-
 const deleteCard = async (req, res) => {
-  const id = req.params.id
   try {
-    const deletedCard = await Card.findByIdAndDelete(id)
-    if (!deletedCard) {
-      throw new Error('Cannot locate the card')
+    const deletedCards = await Card.findByIdAndDelete(req.params.id)
+    if (!deletedCards) {
+      return res.status(404).send('Cannot locate the card')
     }
     res.status(204).send()
   } catch (error) {

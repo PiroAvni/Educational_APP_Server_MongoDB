@@ -1,12 +1,12 @@
-const Bookmarks = require('../models/Bookmarks');
+const Bookmarks = require('../models/Bookmarks')
 
 const getBookmarks = async (req, res) => {
   try {
-    const bookmarks = await Bookmarks.find()
+    const bookmarks = await Bookmarks.find().populate("userID").populate("cardID")
     if (bookmarks.length === 0) {
-        throw new Error('No bookmarks found')
+      throw new Error('No bookmarks found')
     }
-    res.json(bookmarks)
+    res.status(200).json(bookmarks)
   } catch (error) {
     res.status(500).json({ error: error.message })
   }
@@ -14,34 +14,37 @@ const getBookmarks = async (req, res) => {
 
 const getBookmarksById = async (req, res) => {
   try {
-    const bookmarks = await Bookmarks.findById(req.params.id)
+    const bookmarks = await Bookmarks.findById(req.params.id).populate("userID").populate("cardID")
     if (!bookmarks) {
       throw new Error('Bookmarks ID not found')
     }
-    res.json(bookmarks)
+    res.status(200).json(bookmarks)
   } catch (error) {
-    res.status(500).json({ error: error.message })
+    res.status(400).json({ error: error.message })
   }
 }
 const createBookmarks = async (req, res) => {
   const { userID, cardID } = req.body
-    try {
-    const newBookmarks =  await Bookmarks.create({ userID, cardID })
+  try {
+    const newBookmarks = await Bookmarks.create({ userID, cardID })
     res.status(201).json(newBookmarks)
   } catch (error) {
-    res.status(500).json({ error: error.message })
+    res.status(400).json({ error: error.message })
   }
 }
 const updateBookmarks = async (req, res) => {
   try {
     const { userID, cardID } = req.body
-    let bookmarks = await Bookmarks.findByIdAndUpdate(req.params.id, {userID, cardID})
+    let bookmarks = await Bookmarks.findByIdAndUpdate(req.params.id, {
+      userID,
+      cardID,
+    })
     if (!bookmarks) {
       throw new Error('Bookmarks not found')
     }
-    res.json(bookmarks)
+    res.status(200).json(bookmarks)
   } catch (error) {
-    res.status(500).json({ error: error.message })
+    res.status(400).json({ error: error.message })
   }
 }
 const deleteBookmarks = async (req, res) => {
@@ -50,9 +53,9 @@ const deleteBookmarks = async (req, res) => {
     if (!bookmarks) {
       throw new Error('Bookmarks not found')
     }
-    res.json({ message: 'Bookmarks deleted successfully' })
+    res.status(204).json({ message: 'Bookmarks deleted successfully' })
   } catch (error) {
-    res.status(500).json({ error: error.message })
+    res.status(400).json({ error: error.message })
   }
 }
 
