@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 const cardsSchema = mongoose.Schema({
   categoryID: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: mongoose.Schema.Types.String,
     ref: 'Category',
   },
 
