@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1685618301633" clover="3.2.0">
-  <project timestamp="1685618301633" name="All files">
-    <metrics statements="388" coveredstatements="321" conditionals="60" coveredconditionals="30" methods="39" coveredmethods="33" elements="487" coveredelements="384" complexity="0" loc="388" ncloc="388" packages="7" files="24" classes="24"/>
+<coverage generated="1685618677948" clover="3.2.0">
+  <project timestamp="1685618677948" name="All files">
+    <metrics statements="388" coveredstatements="345" conditionals="60" coveredconditionals="34" methods="39" coveredmethods="38" elements="487" coveredelements="417" complexity="0" loc="388" ncloc="388" packages="7" files="24" classes="24"/>
     <package name="Educational_APP_Server_MongoDB">
       <metrics statements="31" coveredstatements="30" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
       <file name="app.js" path="/Users/doheelee/Desktop/Educational_APP_Server_MongoDB/app.js">
@@ -50,7 +50,7 @@
         <line num="7" count="8" type="stmt"/>
         <line num="8" count="8" type="stmt"/>
         <line num="9" count="8" type="stmt"/>
-        <line num="14" count="7" type="stmt"/>
+        <line num="14" count="8" type="stmt"/>
         <line num="16" count="0" type="stmt"/>
         <line num="17" count="0" type="stmt"/>
         <line num="20" count="8" type="stmt"/>
@@ -58,9 +58,9 @@
       </file>
     </package>
     <package name="Educational_APP_Server_MongoDB.controllers">
-      <metrics statements="222" coveredstatements="165" conditionals="48" coveredconditionals="22" methods="30" coveredmethods="25"/>
+      <metrics statements="222" coveredstatements="189" conditionals="48" coveredconditionals="26" methods="30" coveredmethods="30"/>
       <file name="Users.js" path="/Users/doheelee/Desktop/Educational_APP_Server_MongoDB/controllers/Users.js">
-        <metrics statements="44" coveredstatements="30" conditionals="18" coveredconditionals="8" methods="5" coveredmethods="5"/>
+        <metrics statements="44" coveredstatements="34" conditionals="18" coveredconditionals="12" methods="5" coveredmethods="5"/>
         <line num="1" count="8" type="stmt"/>
         <line num="2" count="8" type="stmt"/>
         <line num="3" count="8" type="stmt"/>
@@ -73,35 +73,35 @@
         <line num="23" count="1" type="stmt"/>
         <line num="24" count="1" type="stmt"/>
         <line num="31" count="8" type="stmt"/>
-        <line num="32" count="2" type="stmt"/>
-        <line num="34" count="2" type="stmt"/>
-        <line num="36" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="32" count="1" type="stmt"/>
+        <line num="34" count="1" type="stmt"/>
+        <line num="36" count="1" type="cond" truecount="1" falsecount="1"/>
         <line num="37" count="0" type="stmt"/>
         <line num="38" count="0" type="stmt"/>
-        <line num="41" count="2" type="stmt"/>
-        <line num="47" count="2" type="cond" truecount="1" falsecount="1"/>
-        <line num="48" count="2" type="stmt"/>
-        <line num="50" count="2" type="stmt"/>
+        <line num="41" count="1" type="stmt"/>
+        <line num="47" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="48" count="1" type="stmt"/>
+        <line num="50" count="1" type="stmt"/>
         <line num="56" count="0" type="stmt"/>
         <line num="57" count="0" type="stmt"/>
         <line num="64" count="8" type="stmt"/>
         <line num="65" count="1" type="stmt"/>
         <line num="69" count="1" type="stmt"/>
         <line num="75" count="8" type="stmt"/>
-        <line num="76" count="1" type="stmt"/>
-        <line num="78" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="79" count="0" type="stmt"/>
+        <line num="76" count="2" type="stmt"/>
+        <line num="78" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="79" count="1" type="stmt"/>
         <line num="85" count="0" type="stmt"/>
         <line num="86" count="0" type="stmt"/>
         <line num="93" count="8" type="stmt"/>
-        <line num="94" count="2" type="stmt"/>
-        <line num="96" count="1" type="cond" truecount="1" falsecount="1"/>
-        <line num="97" count="1" type="cond" truecount="1" falsecount="1"/>
-        <line num="98" count="1" type="cond" truecount="1" falsecount="1"/>
-        <line num="100" count="1" type="cond" truecount="1" falsecount="1"/>
-        <line num="101" count="0" type="stmt"/>
-        <line num="104" count="1" type="stmt"/>
-        <line num="106" count="0" type="stmt"/>
+        <line num="94" count="3" type="stmt"/>
+        <line num="96" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="97" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="98" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="100" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="101" count="1" type="stmt"/>
+        <line num="104" count="2" type="stmt"/>
+        <line num="106" count="2" type="stmt"/>
         <line num="112" count="0" type="stmt"/>
         <line num="113" count="0" type="stmt"/>
         <line num="118" count="8" type="stmt"/>
@@ -229,34 +229,34 @@
         <line num="60" count="8" type="stmt"/>
       </file>
       <file name="decks.js" path="/Users/doheelee/Desktop/Educational_APP_Server_MongoDB/controllers/decks.js">
-        <metrics statements="28" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="0"/>
+        <metrics statements="28" coveredstatements="27" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="5"/>
         <line num="1" count="8" type="stmt"/>
         <line num="3" count="8" type="stmt"/>
-        <line num="4" count="0" type="stmt"/>
-        <line num="5" count="0" type="stmt"/>
-        <line num="6" count="0" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
         <line num="8" count="0" type="stmt"/>
         <line num="12" count="8" type="stmt"/>
-        <line num="13" count="0" type="stmt"/>
-        <line num="14" count="0" type="stmt"/>
-        <line num="17" count="0" type="stmt"/>
-        <line num="19" count="0" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
+        <line num="14" count="2" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
         <line num="23" count="8" type="stmt"/>
-        <line num="25" count="0" type="stmt"/>
-        <line num="26" count="0" type="stmt"/>
-        <line num="27" count="0" type="stmt"/>
-        <line num="35" count="0" type="stmt"/>
-        <line num="37" count="0" type="stmt"/>
+        <line num="25" count="2" type="stmt"/>
+        <line num="26" count="2" type="stmt"/>
+        <line num="27" count="2" type="stmt"/>
+        <line num="35" count="1" type="stmt"/>
+        <line num="37" count="1" type="stmt"/>
         <line num="41" count="8" type="stmt"/>
-        <line num="42" count="0" type="stmt"/>
-        <line num="43" count="0" type="stmt"/>
-        <line num="44" count="0" type="stmt"/>
-        <line num="46" count="0" type="stmt"/>
+        <line num="42" count="2" type="stmt"/>
+        <line num="43" count="2" type="stmt"/>
+        <line num="44" count="1" type="stmt"/>
+        <line num="46" count="1" type="stmt"/>
         <line num="50" count="8" type="stmt"/>
-        <line num="51" count="0" type="stmt"/>
-        <line num="52" count="0" type="stmt"/>
-        <line num="53" count="0" type="stmt"/>
-        <line num="55" count="0" type="stmt"/>
+        <line num="51" count="2" type="stmt"/>
+        <line num="52" count="2" type="stmt"/>
+        <line num="53" count="1" type="stmt"/>
+        <line num="55" count="1" type="stmt"/>
         <line num="59" count="8" type="stmt"/>
       </file>
       <file name="progress.js" path="/Users/doheelee/Desktop/Educational_APP_Server_MongoDB/controllers/progress.js">
@@ -308,12 +308,12 @@
         <line num="2" count="8" type="stmt"/>
         <line num="4" count="8" type="stmt"/>
         <line num="6" count="8" type="stmt"/>
-        <line num="9" count="3" type="stmt"/>
-        <line num="11" count="3" type="cond" truecount="1" falsecount="1"/>
-        <line num="12" count="3" type="stmt"/>
-        <line num="13" count="3" type="stmt"/>
-        <line num="15" count="3" type="stmt"/>
-        <line num="17" count="3" type="stmt"/>
+        <line num="9" count="5" type="stmt"/>
+        <line num="11" count="5" type="cond" truecount="1" falsecount="1"/>
+        <line num="12" count="5" type="stmt"/>
+        <line num="13" count="5" type="stmt"/>
+        <line num="15" count="5" type="stmt"/>
+        <line num="17" count="5" type="stmt"/>
         <line num="19" count="0" type="stmt"/>
         <line num="20" count="0" type="stmt"/>
         <line num="21" count="0" type="stmt"/>
@@ -324,23 +324,23 @@
       <file name="errorMiddleware.js" path="/Users/doheelee/Desktop/Educational_APP_Server_MongoDB/middleware/errorMiddleware.js">
         <metrics statements="12" coveredstatements="10" conditionals="8" coveredconditionals="5" methods="2" coveredmethods="2"/>
         <line num="1" count="8" type="stmt"/>
-        <line num="2" count="7" type="stmt"/>
-        <line num="3" count="7" type="stmt"/>
-        <line num="4" count="7" type="stmt"/>
+        <line num="2" count="2" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="4" count="2" type="stmt"/>
         <line num="7" count="8" type="stmt"/>
-        <line num="8" count="11" type="cond" truecount="2" falsecount="0"/>
-        <line num="9" count="11" type="stmt"/>
-        <line num="12" count="11" type="cond" truecount="2" falsecount="2"/>
+        <line num="8" count="5" type="cond" truecount="2" falsecount="0"/>
+        <line num="9" count="5" type="stmt"/>
+        <line num="12" count="5" type="cond" truecount="2" falsecount="2"/>
         <line num="13" count="0" type="stmt"/>
         <line num="14" count="0" type="stmt"/>
-        <line num="17" count="11" type="stmt"/>
+        <line num="17" count="5" type="stmt"/>
         <line num="23" count="8" type="stmt"/>
       </file>
       <file name="logger.js" path="/Users/doheelee/Desktop/Educational_APP_Server_MongoDB/middleware/logger.js">
         <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="1" count="8" type="stmt"/>
-        <line num="2" count="48" type="stmt"/>
-        <line num="3" count="48" type="stmt"/>
+        <line num="2" count="53" type="stmt"/>
+        <line num="3" count="53" type="stmt"/>
         <line num="6" count="8" type="stmt"/>
       </file>
     </package>
@@ -369,10 +369,10 @@
       </file>
       <file name="Decks.js" path="/Users/doheelee/Desktop/Educational_APP_Server_MongoDB/models/Decks.js">
         <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="9" type="stmt"/>
-        <line num="3" count="9" type="stmt"/>
-        <line num="30" count="9" type="stmt"/>
-        <line num="32" count="9" type="stmt"/>
+        <line num="1" count="8" type="stmt"/>
+        <line num="3" count="8" type="stmt"/>
+        <line num="30" count="8" type="stmt"/>
+        <line num="32" count="8" type="stmt"/>
       </file>
       <file name="Progress.js" path="/Users/doheelee/Desktop/Educational_APP_Server_MongoDB/models/Progress.js">
         <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
@@ -478,8 +478,8 @@
         <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="1" count="8" type="stmt"/>
         <line num="3" count="8" type="stmt"/>
-        <line num="4" count="2" type="stmt"/>
-        <line num="8" count="2" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
         <line num="16" count="8" type="stmt"/>
       </file>
     </package>
