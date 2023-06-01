@@ -58,13 +58,11 @@ const updateCard = async (req, res) => {
     res.status(400).send(error.message)
   }
 }
-
 const deleteCard = async (req, res) => {
-  const id = req.params.id
   try {
-    const deletedCard = await Card.findByIdAndDelete(id)
-    if (!deletedCard) {
-      throw new Error('Cannot locate the card')
+    const deletedCards = await Card.findByIdAndDelete(req.params.id)
+    if (!deletedCards) {
+      return res.status(404).send('Cannot locate the card')
     }
     res.status(204).send()
   } catch (error) {

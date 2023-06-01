@@ -4,9 +4,9 @@ const getProgress = async (req, res) => {
   try {
     const progress = await Progress.find()
     if (progress.length === 0) {
-        throw new Error('No progress found')
+      throw new Error('No progress found')
     }
-    res.json(progress)
+    res.status(200).json(progress)
   } catch (error) {
     res.status(500).json({ error: error.message })
   }
@@ -18,15 +18,32 @@ const getProgressById = async (req, res) => {
     if (!progress) {
       throw new Error('Progress ID not found')
     }
-    res.json(progress)
+    res.status(200).json(progress)
   } catch (error) {
     res.status(500).json({ error: error.message })
   }
 }
 const createProgress = async (req, res) => {
-    const { userID, deckID, cardsReviewed, correctResponses, incorrectResponses, lastReviewed, progressPercentage, completionStatus } = req.body
-    try {
-        const newProgress = await Progress.create ({userID, deckID, cardsReviewed, correctResponses, incorrectResponses, lastReviewed, progressPercentage, completionStatus
+  const {
+    userID,
+    deckID,
+    cardsReviewed,
+    correctResponses,
+    incorrectResponses,
+    lastReviewed,
+    progressPercentage,
+    completionStatus,
+  } = req.body
+  try {
+    const newProgress = await Progress.create({
+      userID,
+      deckID,
+      cardsReviewed,
+      correctResponses,
+      incorrectResponses,
+      lastReviewed,
+      progressPercentage,
+      completionStatus,
     })
     res.status(201).json(newProgress)
   } catch (error) {
@@ -76,7 +93,7 @@ const deleteProgress = async (req, res) => {
     if (!progress) {
       throw new Error('Progress not found')
     }
-    res.json({ message: 'Progress deleted successfully' })
+    res.status(204).json({ message: 'Progress deleted successfully' })
   } catch (error) {
     res.status(500).json({ error: error.message })
   }
