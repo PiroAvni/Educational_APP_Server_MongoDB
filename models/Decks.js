@@ -1,11 +1,11 @@
 const mongoose = require('mongoose')
 
 const deckSchema = mongoose.Schema({
-  userId: {
+  userID: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
   },
-  categoryId: {
+  categoryID: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Category',
   },
