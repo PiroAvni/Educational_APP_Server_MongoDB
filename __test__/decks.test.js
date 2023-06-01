@@ -5,13 +5,18 @@ const Deck = require('../models/Decks')
 describe('api for deck', () => {
   it('should respond with 200 ', async () => {
     const response = await request(app)
-      .get('/api/decks')
+      .get('/api/deck')
       .expect(200)
       .expect('Content-Type', /json/)
   })
 
   it('should respond with 200 ', async () => {
-    const deck = await Deck.create({ title: 'English', description: 'english', visibility: 'true', create_date: '2023-06-01' })
+    const deck = await Deck.create({
+      title: 'English',
+      description: 'english',
+      visibility: 'true',
+      create_date: '2023-06-01',
+    })
     const response = await request(app)
       .get(`/api/deck/${deck._id}`)
       .expect(200)
@@ -20,7 +25,10 @@ describe('api for deck', () => {
 
   it('should respond with 201 success', async () => {
     const add = {
-      title: 'English', description: 'english', visibility: 'true', create_date: '2023-06-01'
+      title: 'English',
+      description: 'english',
+      visibility: 'true',
+      create_date: '2023-06-01',
     }
     const response = await request(app)
       .post('/api/deck')
@@ -30,10 +38,18 @@ describe('api for deck', () => {
   })
 
   it('should respond with 200 success', async () => {
-    const deck = await Deck.create({ title: 'English', description: 'english', visibility: 'true', create_date: '2023-06-01' })
+    const deck = await Deck.create({
+      title: 'English',
+      description: 'english',
+      visibility: 'true',
+      create_date: '2023-06-01',
+    })
 
     const update = {
-      title: 'English', description: 'english', visibility: 'true', create_date: '2023-06-01'
+      title: 'English',
+      description: 'english',
+      visibility: 'true',
+      create_date: '2023-06-01',
     }
 
     const response = await request(app)
@@ -49,7 +65,12 @@ describe('api for deck', () => {
 
   it('should delete a deck and respond with 204', async () => {
     // Create a new deck in the database
-    const deck = await Deck.create({ title: 'English', description: 'english', visibility: 'true', create_date: '2023-06-01' })
+    const deck = await Deck.create({
+      title: 'English',
+      description: 'english',
+      visibility: 'true',
+      create_date: '2023-06-01',
+    })
 
     // Send a DELETE request to delete the deck
     const response = await request(app)
@@ -85,8 +106,6 @@ describe('api for deck', () => {
   })
 
   it('responds to invalid delete method request with 400', async () => {
-    const response = await request(app)
-      .delete(`/api/deck/:id`)
-      .expect(400)
+    const response = await request(app).delete(`/api/deck/:id`).expect(400)
   })
 })
