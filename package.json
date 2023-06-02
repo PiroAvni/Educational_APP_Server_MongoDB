@@ -1,4 +1,5 @@
 {
+
     "name": "Educational_app_Backend",
     "version": "1.0.0",
     "description": "Educational Revision tool for Flash Cards",
@@ -46,4 +47,5 @@
         "supertest": "^6.3.3",
         "vitest": "^0.31.2"
     }
+
 }

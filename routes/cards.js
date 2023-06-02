@@ -1,6 +1,12 @@
 const express = require('express')
 
-const { getCard, getCardByID, createCard, updateCard, deleteCard } = require('../controllers/cards')
+const {
+  getCard,
+  getCardByID,
+  createCard,
+  updateCard,
+  deleteCard,
+} = require('../controllers/cards')
 
 const router = express.Router()
 
