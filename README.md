@@ -12,10 +12,6 @@ Before running the application, you need to set up the following environment var
 
 To set up these variables, create a new file called `.env`. 
 
-## Database Setup
-
-- To set up the database, run the following command in your terminal: ```"npm run setup-db"```
-
 ## How To run the server
 
 - Execute the following command in your terminal to start the server: ```"npm run dev"```
