@@ -3,7 +3,7 @@ const Card = require('../models/Cards')
 
 const getCard = async (req, res) => {
   try {
-    const cards = await Card.find().populate("categoryID").populate("deckID")
+    const cards = await Card.find().populate("categoryId").populate("deckID")
     if (cards.length === 0) {
       throw new Error('No cards found')
     }
@@ -16,7 +16,7 @@ const getCard = async (req, res) => {
 const getCardByID = async (req, res) => {
   const id = req.params.id
   try {
-    const card = await Card.findById(id).populate("categoryID").populate("deckID")
+    const card = await Card.findById(id).populate("categoryId").populate("deckID")
     if (!card) {
       throw new Error('Cannot locate the card')
     }
@@ -27,10 +27,10 @@ const getCardByID = async (req, res) => {
 }
 
 const createCard = async (req, res) => {
-  const { categoryID, deckID, frontContent, backContent, viewCount } = req.body
+  const { categoryId, deckID, frontContent, backContent, viewCount } = req.body
   try {
     const newCard = await Card.create({
-      categoryID,
+      categoryId,
       deckID,
       frontContent,
       backContent,
@@ -44,11 +44,11 @@ const createCard = async (req, res) => {
 
 const updateCard = async (req, res) => {
   const id = req.params.id
-  const { categoryID, deckID, frontContent, backContent, viewCount } = req.body
+  const { categoryId, deckID, frontContent, backContent, viewCount } = req.body
   try {
     const updatedCard = await Card.findByIdAndUpdate(
       id,
-      { categoryID, deckID, frontContent, backContent, viewCount },
+      { categoryId, deckID, frontContent, backContent, viewCount },
       { new: true }
     )
     if (!updatedCard) {
@@ -71,4 +71,18 @@ const deleteCard = async (req, res) => {
   }
 }
 
-module.exports = { getCard, getCardByID, createCard, updateCard, deleteCard }
+const getFlashcardsByDeckId = async (req, res) => {
+  const deckId = req.params.deckId;
+
+  try {
+    const flashcards = await Card.find({ deckID: deckId }).populate("categoryId").populate("deckID");
+    if (flashcards.length === 0) {
+      throw new Error('No flashcards found for the specified deck');
+    }
+    res.status(200).json(flashcards);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+module.exports = { getCard, getCardByID, createCard, updateCard, deleteCard, getFlashcardsByDeckId }

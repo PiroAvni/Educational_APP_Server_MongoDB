@@ -1,15 +1,15 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
 const deckSchema = mongoose.Schema({
-  userID: {
+  userId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
+    required: true,
   },
-
   categoryId: {
-    type: mongoose.Schema.Types.String,
-
+    type: mongoose.Schema.Types.ObjectId,
     ref: 'Category',
+    required: true,
   },
   title: {
     type: String,
@@ -27,8 +27,8 @@ const deckSchema = mongoose.Schema({
     type: Date,
     default: Date.now,
   },
-})
+});
 
-const Deck = mongoose.model('Deck', deckSchema)
+const Deck = mongoose.model('Deck', deckSchema);
 
-module.exports = Deck
+module.exports = Deck;

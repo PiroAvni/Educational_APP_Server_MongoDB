@@ -2,12 +2,12 @@ const mongoose = require('mongoose')
 
 const bookmarksSchema = mongoose.Schema(
   {
-    userID: {
+    userId: {
       // Change field name to 'userId'
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User',
     },
-    cardID: {
+    cardId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Cards',
     },

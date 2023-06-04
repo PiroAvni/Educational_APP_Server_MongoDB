@@ -1,8 +1,8 @@
 const mongoose = require('mongoose')
 
 const cardsSchema = mongoose.Schema({
-  categoryID: {
-    type: mongoose.Schema.Types.String,
+  categoryId: {
+    type: mongoose.Schema.Types.ObjectId,
     ref: 'Category',
   },
 
