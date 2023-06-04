@@ -58,11 +58,26 @@ const destroy = async (req, res) => {
   }
 };
 
+const getDecksByCategory = async (req, res) => {
+  try {
+    const { categoryId } = req.params;
+
+    // Query the database to find decks with the specified categoryId
+    const decks = await Deck.find({ categoryId });
+
+    res.json(decks);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Server Error' });
+  }
+};
+
 module.exports = {
   index,
   show,
   create,
   update,
   destroy,
+  getDecksByCategory,
 };
 
