@@ -119,3 +119,14 @@ The Flashcard App API provides the following endpoints:
 - jest
 - nodemon
 - supertest
+
+## Testing 
+
+We have placed a strong emphasis on testing the backend of this project to ensure its reliability and functionality. A comprehensive suite of tests has been developed to cover different aspects and components of the backend.
+
+Our testing efforts have resulted in an impressive 83% coverage rate for the backend codebase. This level of coverage indicates that a significant portion of the backend has been thoroughly tested, reducing the risk of undiscovered issues.
+
+<img width="362" alt="Screenshot 2023-06-04 at 14 58 25" src="https://github.com/PiroAvni/Educational_APP_Server_MongoDB/assets/112406576/606ebace-f7d3-4dec-bbc6-9232ed6cbb6d">
+
+
+
