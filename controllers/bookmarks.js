@@ -3,8 +3,8 @@ const Bookmarks = require('../models/Bookmarks')
 const getBookmarks = async (req, res) => {
   try {
     const bookmarks = await Bookmarks.find()
-      .populate('userID')
-      .populate('cardID')
+      .populate('userId')
+      .populate('cardId')
     if (bookmarks.length === 0) {
       throw new Error('No bookmarks found')
     }
@@ -17,8 +17,8 @@ const getBookmarks = async (req, res) => {
 const getBookmarksById = async (req, res) => {
   try {
     const bookmarks = await Bookmarks.findById(req.params.id)
-      .populate('userID')
-      .populate('cardID')
+      .populate('userId')
+      .populate('cardId')
     if (!bookmarks) {
       throw new Error('Bookmarks ID not found')
     }
@@ -28,9 +28,9 @@ const getBookmarksById = async (req, res) => {
   }
 }
 const createBookmarks = async (req, res) => {
-  const { userID, cardID } = req.body
+  const { userId, cardId } = req.body
   try {
-    const newBookmarks = await Bookmarks.create({ userID, cardID })
+    const newBookmarks = await Bookmarks.create({ userId, cardId })
     res.status(201).json(newBookmarks)
   } catch (error) {
     res.status(400).json({ error: error.message })
@@ -38,10 +38,10 @@ const createBookmarks = async (req, res) => {
 }
 const updateBookmarks = async (req, res) => {
   try {
-    const { userID, cardID } = req.body
+    const { userId, cardId } = req.body
     let bookmarks = await Bookmarks.findByIdAndUpdate(req.params.id, {
-      userID,
-      cardID,
+      userId,
+      cardId,
     })
     if (!bookmarks) {
       throw new Error('Bookmarks not found')

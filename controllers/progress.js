@@ -2,7 +2,7 @@ const Progress = require('../models/Progress')
 
 const getProgress = async (req, res) => {
   try {
-    const progress = await Progress.find().populate('userID').populate('deckID')
+    const progress = await Progress.find().populate('userId').populate('deckId')
     if (progress.length === 0) {
       throw new Error('No progress found')
     }
@@ -15,7 +15,7 @@ const getProgress = async (req, res) => {
 const getProgressById = async (req, res) => {
   try {
 
-    const progress = await Progress.findById(req.params.id).populate("userId").populate("deckID")
+    const progress = await Progress.findById(req.params.id).populate("userId").populate("deckId")
 
     if (!progress) {
       throw new Error('Progress ID not found')
@@ -27,8 +27,8 @@ const getProgressById = async (req, res) => {
 }
 const createProgress = async (req, res) => {
   const {
-    userID,
-    deckID,
+    userId,
+    deckId,
     cardsReviewed,
     correctResponses,
     incorrectResponses,
@@ -38,8 +38,8 @@ const createProgress = async (req, res) => {
   } = req.body
   try {
     const newProgress = await Progress.create({
-      userID,
-      deckID,
+      userId,
+      deckId,
       cardsReviewed,
       correctResponses,
       incorrectResponses,
@@ -55,8 +55,8 @@ const createProgress = async (req, res) => {
 const updateProgress = async (req, res) => {
   try {
     const {
-      userID,
-      deckID,
+      userId,
+      deckId,
       cardsReviewed,
       correctResponses,
       incorrectResponses,
@@ -67,8 +67,8 @@ const updateProgress = async (req, res) => {
     let progress = await Progress.findByIdAndUpdate(
       req.params.id,
       {
-        userID,
-        deckID,
+        userId,
+        deckId,
         cardsReviewed,
         correctResponses,
         incorrectResponses,
